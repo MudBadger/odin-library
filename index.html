@@ -12,8 +12,22 @@
     </head>
     <body>
         <h1 id="mainTitle">Library</h1>
+        <dialog id="dialogBox">
+            <button formmethod="dialog" type="submit" id="closeModalBtn">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <form method="dialog" id="bookForm">
+                <label for="title">Title : </label>
+                <input type="text" id="title" name="title" />
+                <label for="author">Author : </label>
+                <input type="text" id="author" name="author" />
+                <label for="genre">Genre : </label>
+                <input type="text" id="genre" name="genre" />
+            </form>
+            <button type="submit" id="submitBookBtn">Submit</button>
+        </dialog>
         <div id="booksContainer">
-            <button id="addBook" class="bookCards">
+            <button id="addBookBtn" class="bookCards">
                 <p>Add new book</p>
                 <i class="fa-solid fa-plus"></i>
             </button>
