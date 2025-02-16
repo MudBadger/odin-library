@@ -7,9 +7,9 @@ const submitBookBtn = document.querySelector("#submitBookBtn");
 const bookForm = document.querySelector("#bookForm");
 let displayedLibrary = [];
 
-const bookOne = new Book("The Hobbit", "Tolkien", "Fantasy", "Yes");
-const bookTwo = new Book("Dune", "Herbert", "SF", "No");
-const bookThree = new Book("Ranma 1/2", "Takahashi", "Manga", "Yes");
+const bookOne = new Book("The Hobbit", "Tolkien", "Fantasy", "Oui");
+const bookTwo = new Book("Dune", "Herbert", "SF", "Non");
+const bookThree = new Book("Ranma 1/2", "Takahashi", "Manga", "Oui");
 
 addBookBtn.addEventListener("click", () => {
     dialogBox.showModal();
@@ -67,7 +67,7 @@ function displayBook(book) {
 
     const closeCards = document.createElement("div");
     closeCards.className = "closeCards";
-    closeCards.innerHTML = "<i class='fa-solid fa-xmark'></i>";
+    closeCards.innerHTML = "<i class='fa-solid fa-trash-can'></i>";
 
     const title = document.createElement("p");
     title.className = "bookInfos";
