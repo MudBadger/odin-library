@@ -1,21 +1,47 @@
 body {
     margin: 0;
     padding: 0;
-    background-color: rgb(255, 253, 251);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #fffdfb;
     font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
         sans-serif;
     color: #975800;
 }
 
 #mainTitle {
-    display: flex;
-    justify-content: center;
     font-size: 3rem;
 }
+
+#addBook {
+    border: none;
+    color: #975800;
+    font-size: 1rem;
+    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+        sans-serif;
+    background-color: #fffdfb;
+    outline: 1px dashed #975800;
+    box-shadow: none;
+    transition: all 100ms ease-in-out;
+    &:active {
+        scale: 0.97;
+    }
+    &:hover {
+        background-color: #faebd7;
+    }
+}
+
+.fa-plus {
+    font-size: 1.5rem;
+}
+
 #booksContainer {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     margin: 1rem;
+    padding: 0;
     flex-wrap: wrap;
 }
 

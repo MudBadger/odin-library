@@ -1,7 +1,4 @@
 const myLibrary = [];
-const title = document.querySelector("#title");
-const author = document.querySelector("#author");
-const genre = document.querySelector("#genre");
 const booksContainer = document.querySelector("#booksContainer");
 
 function Book(title, author, genre) {
