@@ -21,35 +21,41 @@
             <h1 class="mainTitle">Bibliothèque du Sabot</h1>
         </div>
         <dialog id="dialogBox">
-            <div id="dialogCloseBtnContainer">
-                <button formmethod="dialog" type="submit" id="closeModalBtn">
-                    <i class="fa-solid fa-xmark"></i>
-                </button>
-            </div>
-            <div id="dialogContent">
-                <h2>Ajouter nouveau livre</h2>
-                <form method="dialog" id="bookForm">
-                    <div>
-                        <label for="title">Titre : </label>
-                        <input type="text" id="title" name="title" />
-                    </div>
-                    <div>
-                        <label for="author">Auteur : </label>
-                        <input type="text" id="author" name="author" />
-                    </div>
-                    <div>
-                        <label for="genre">Genre : </label>
-                        <input type="text" id="genre" name="genre" />
-                    </div>
-                    <div id="selectContainer">
-                        <label for="read">Emprunté : </label>
-                        <select type="select" id="read" name="read">
-                            <option value="Yes">Oui</option>
-                            <option value="No">Non</option>
-                        </select>
-                    </div>
-                </form>
-                <button type="submit" id="submitBookBtn">Envoyer</button>
+            <div id="dialogContainer">
+                <div id="dialogCloseBtnContainer">
+                    <button
+                        formmethod="dialog"
+                        type="submit"
+                        id="closeModalBtn"
+                    >
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
+                <div id="dialogContent">
+                    <h2>Ajouter nouveau livre</h2>
+                    <form method="dialog" id="bookForm">
+                        <div>
+                            <label for="title">Titre : </label>
+                            <input type="text" id="title" name="title" />
+                        </div>
+                        <div>
+                            <label for="author">Auteur : </label>
+                            <input type="text" id="author" name="author" />
+                        </div>
+                        <div>
+                            <label for="genre">Genre : </label>
+                            <input type="text" id="genre" name="genre" />
+                        </div>
+                        <div id="selectContainer">
+                            <label for="read">Emprunté : </label>
+                            <select type="select" id="read" name="read">
+                                <option value="Yes">Oui</option>
+                                <option value="No">Non</option>
+                            </select>
+                        </div>
+                    </form>
+                    <button type="submit" id="submitBookBtn">Envoyer</button>
+                </div>
             </div>
         </dialog>
         <div id="booksContainer">

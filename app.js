@@ -5,6 +5,7 @@ const dialogBox = document.querySelector("#dialogBox");
 const closeModalBtn = document.querySelector("#closeModalBtn");
 const submitBookBtn = document.querySelector("#submitBookBtn");
 const bookForm = document.querySelector("#bookForm");
+const dialogContainer = document.querySelector("#dialogContainer");
 let displayedLibrary = [];
 
 const bookOne = new Book("The Hobbit", "Tolkien", "Fantasy", "Oui");
@@ -18,6 +19,8 @@ addBookBtn.addEventListener("click", () => {
 closeModalBtn.addEventListener("click", () => {
     dialogBox.close();
 });
+dialogBox.addEventListener("click", () => dialogBox.close());
+dialogContainer.addEventListener("click", (event) => event.stopPropagation());
 
 submitBookBtn.addEventListener("click", (event) => {
     event.preventDefault();
