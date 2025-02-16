@@ -8,10 +8,18 @@
             src="https://kit.fontawesome.com/bf9509b226.js"
             crossorigin="anonymous"
         ></script>
-        <title>Library</title>
+        <title>Bibliothèque du Sabot</title>
     </head>
     <body>
-        <h1 id="mainTitle">Library</h1>
+        <div class="header">
+            <img
+                src="./assets/images/logo.PNG"
+                class="logo"
+                alt="Logo du Sabot, local libertaire, représentant un chat noir dans un sabot sur fond rouge"
+            />
+
+            <h1 class="mainTitle">Bibliothèque du Sabot</h1>
+        </div>
         <dialog id="dialogBox">
             <div id="dialogCloseBtnContainer">
                 <button formmethod="dialog" type="submit" id="closeModalBtn">
@@ -19,14 +27,14 @@
                 </button>
             </div>
             <div id="dialogContent">
-                <h2>New Book</h2>
+                <h2>Ajouter nouveau livre</h2>
                 <form method="dialog" id="bookForm">
                     <div>
-                        <label for="title">Title : </label>
+                        <label for="title">Titre : </label>
                         <input type="text" id="title" name="title" />
                     </div>
                     <div>
-                        <label for="author">Author : </label>
+                        <label for="author">Auteur : </label>
                         <input type="text" id="author" name="author" />
                     </div>
                     <div>
@@ -34,19 +42,19 @@
                         <input type="text" id="genre" name="genre" />
                     </div>
                     <div id="selectContainer">
-                        <label for="read">Read : </label>
+                        <label for="read">Emprunté : </label>
                         <select type="select" id="read" name="read">
-                            <option value="Yes">Yes</option>
-                            <option value="No">No</option>
+                            <option value="Yes">Oui</option>
+                            <option value="No">Non</option>
                         </select>
                     </div>
                 </form>
-                <button type="submit" id="submitBookBtn">Submit</button>
+                <button type="submit" id="submitBookBtn">Envoyer</button>
             </div>
         </dialog>
         <div id="booksContainer">
-            <button id="addBookBtn" class="bookCards">
-                <p>Add new book</p>
+            <button id="addBookBtn" class="cardsStyle">
+                <p>Ajouter nouveau livre</p>
                 <i class="fa-solid fa-plus"></i>
             </button>
         </div>

@@ -1,3 +1,22 @@
+@font-face {
+    font-family: Punk;
+    src: url(./fonts/Hit\ me\,\ punk!\ 01.ttf);
+}
+@font-face {
+    font-family: Rellion;
+    src: url(./fonts/Rellion.otf);
+}
+root,
+body {
+    --main-red: #ad0c25;
+    --main-grey: #1d1d1d;
+    --dark-grey: #303030;
+    --light-grey: #f2f2f2;
+    --title-font: Punk, Arial, sans-serif;
+    --main-font: Rellion, "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+        sans-serif;
+}
+
 body {
     margin: 0;
     padding: 0;
@@ -5,36 +24,53 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: #fffdfb;
-    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
-        sans-serif;
-    color: #975800;
+    background-color: var(--main-grey);
+    font-family: var(--main-font);
+    color: var(--light-grey);
+    font-size: 1.2rem;
 }
 
-#mainTitle {
-    font-size: 3rem;
+.header {
+    margin: 1rem 0;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    gap: 5rem;
+}
+.logo {
+    max-width: 100px;
+    max-height: 100px;
+}
+.mainTitle {
+    font-size: 4rem;
+    font-family: var(--title-font);
+    color: var(--main-red);
 }
 
 #addBookBtn {
     border: none;
-    color: #975800;
-    font-size: 1rem;
-    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
-        sans-serif;
-    background-color: #fffdfb;
-    outline: 1px dashed #975800;
+    color: var(--main-red);
+    font-size: 1.2rem;
+    font-family: var(--main-font);
+    background-color: var(--main-grey);
+    outline: 1px dashed var(--main-red);
     box-shadow: none;
     transition: all 100ms ease-in-out;
     &:active {
         scale: 0.97;
     }
     &:hover {
-        background-color: #faebd7;
+        background-color: var(--dark-grey);
+        color: var(--light-grey);
+        cursor: pointer;
     }
 }
 
 .fa-plus {
-    font-size: 1.5rem;
+    font-size: 2rem;
+    color: var(--main-red);
 }
 
 #booksContainer {
@@ -45,14 +81,16 @@ body {
     flex-wrap: wrap;
 }
 
-.bookCards {
+.bookCards,
+.cardsStyle {
     display: flex;
     flex-direction: column;
-    background-color: #faebd7;
+    background-color: var(--dark-grey);
     padding: 1rem 2rem;
     margin: 1rem;
-    border-radius: 25px;
-    box-shadow: 2px 1px 2px rgb(139, 122, 98);
+    border: 5px solid black;
+    border-top-color: var(--main-red);
+    border-left-color: var(--main-red);
 }
 
 .bookInfos {
@@ -61,15 +99,16 @@ body {
 .closeCards {
     align-self: end;
     &:hover {
-        color: red;
+        color: var(--main-red);
+        cursor: pointer;
     }
 }
 
 #dialogBox {
-    background-color: #fffdfb;
-    border: 3px solid #975800;
-    border-radius: 25px;
+    background-color: var(--main-grey);
+    border: 3px solid var(--main-red);
     min-width: 25%;
+    font-size: 1.2rem;
 }
 #dialogContent {
     padding-bottom: 1rem;
@@ -77,8 +116,9 @@ body {
     flex-direction: column;
     align-items: center;
     gap: 1.5rem;
-    color: #975800;
+    color: var(--light-grey);
 }
+
 #dialogContent h2 {
     margin: 0;
     padding: 0;
@@ -91,13 +131,14 @@ body {
     justify-content: end;
 }
 #closeModalBtn {
-    background-color: #fffdfb;
-    color: #975800;
+    background-color: var(--main-grey);
+    color: var(--light-grey);
     border: none;
     font-size: 1.5rem;
     align-self: flex-end;
     &:hover {
-        color: red;
+        color: var(--main-red);
+        cursor: pointer;
     }
 }
 
@@ -110,27 +151,29 @@ body {
 
 #submitBookBtn {
     padding: 0.5rem 2rem;
-    color: #975800;
-    font-size: 1rem;
+    color: var(--light-grey);
+    font-family: var(--main-font);
+    font-size: 1.2rem;
     font-weight: 700;
-    border-radius: 8px;
-    background-color: #faebd7;
-    border: 1px solid #975800;
+    background-color: var(--dark-grey);
+    border: 1px solid var(--main-red);
     transition: all 100ms ease-in-out;
     &:hover {
-        background-color: #fffdfb;
+        background-color: var(--main-grey);
+        cursor: pointer;
     }
 }
 #bookForm input {
     padding: 0.2rem;
-    color: #975800;
-    border-radius: 5px;
+    font-family: var(--main-font);
+    color: var(--light-grey);
+    font-size: 1.2rem;
     padding-left: 0.5rem;
-    background-color: #faebd7;
-    border: 1px solid #975800;
+    background-color: var(--dark-grey);
+    border: 1px solid var(--dark-grey);
     &:focus {
-        border: 1px solid #975800;
-        outline: 1px solid #975800;
+        border: 1px solid var(--main-red);
+        outline: 1px solid var(--main-red);
     }
 }
 #selectContainer {
@@ -138,21 +181,26 @@ body {
 }
 
 #selectContainer select {
-    color: #975800;
-    background-color: #faebd7;
-    border: 1px solid #975800;
-    border-radius: 5px;
+    color: var(--light-grey);
+    background-color: var(--dark-grey);
+    border: 1px solid var(--main-red);
+    font-size: 1.2rem;
+    font-family: var(--main-font);
+    padding: 0.2rem;
+    padding-left: 0.5rem;
 }
 
 .changeBtn {
-    color: #975800;
+    color: var(--light-grey);
     margin-left: 0.5rem;
-    border-radius: 8px;
-    background-color: #faebd7;
-    border: 1px solid #975800;
+    font-size: 1rem;
+    background-color: var(--dark-grey);
+    border: 1px solid var(--main-red);
     transition: all 100ms ease-in-out;
+    font-family: var(--main-font);
     &:hover {
-        background-color: #fffdfb;
+        background-color: var(--main-grey);
+        cursor: pointer;
     }
     &:active {
         scale: 0.97;

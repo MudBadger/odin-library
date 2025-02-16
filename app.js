@@ -5,6 +5,7 @@ const dialogBox = document.querySelector("#dialogBox");
 const closeModalBtn = document.querySelector("#closeModalBtn");
 const submitBookBtn = document.querySelector("#submitBookBtn");
 const bookForm = document.querySelector("#bookForm");
+let displayedLibrary = [];
 
 const bookOne = new Book("The Hobbit", "Tolkien", "Fantasy", "Yes");
 const bookTwo = new Book("Dune", "Herbert", "SF", "No");
@@ -30,7 +31,7 @@ submitBookBtn.addEventListener("click", (event) => {
             bookArray[3]
         );
         addBookToLibrary(newBook);
-        displayBook(newBook);
+        loadingLibrary();
         dialogBox.close();
     } else {
         dialogBox.close();
@@ -45,10 +46,10 @@ function Book(title, author, genre, read) {
 }
 
 Book.prototype.changeReadStatus = function () {
-    if (this.read === "No") {
-        this.read = "Yes";
+    if (this.read === "Non") {
+        this.read = "Oui";
     } else {
-        this.read = "No";
+        this.read = "Non";
     }
 };
 
@@ -85,23 +86,20 @@ function displayBook(book) {
 
     changeStatusBtn.addEventListener("click", () => {
         book.changeReadStatus();
-        readStatus.innerHTML = "<span>Read : " + book.read + "</span>";
+        readStatus.innerHTML = "<span>Emprunté : " + book.read + "</span>";
         readStatus.appendChild(changeStatusBtn);
     });
 
-    title.textContent = "Title : " + book.title;
-    author.textContent = "Author : " + book.author;
+    title.textContent = "Titre : " + book.title;
+    author.textContent = "Auteur•e : " + book.author;
     genre.textContent = "Genre : " + book.genre;
-    changeStatusBtn.textContent = "Change Status";
-    readStatus.innerHTML = "<span>Read : " + book.read + "</span>";
+    changeStatusBtn.textContent = "Changer le statut";
+    readStatus.innerHTML = "<span>Emprunté : " + book.read + "</span>";
 
-    bookCards.appendChild(closeCards);
-    bookCards.appendChild(title);
-    bookCards.appendChild(author);
-    bookCards.appendChild(genre);
-    bookCards.appendChild(readStatus);
-    booksContainer.appendChild(bookCards);
-    readStatus.appendChild(changeStatusBtn);
+    bookCards.append(closeCards, title, author, genre, readStatus);
+    booksContainer.append(bookCards);
+    document.querySelector("#addBookBtn").after(bookCards);
+    readStatus.append(changeStatusBtn);
 
     closeCards.addEventListener("click", () => {
         bookCards.remove();
@@ -109,10 +107,19 @@ function displayBook(book) {
 }
 
 function loadingLibrary() {
-    if (myLibrary.length > 0) {
+    if (
+        myLibrary.length > 0 &&
+        (displayedLibrary.length === 0 ||
+            displayedLibrary.length >= myLibrary.length)
+    ) {
         myLibrary.forEach((book) => {
             displayBook(book);
         });
+        displayedLibrary = [...myLibrary];
+    } else if (myLibrary.length > displayedLibrary.length) {
+        const lastBook = myLibrary[myLibrary.length - 1];
+        displayBook(lastBook);
+        displayedLibrary = [...myLibrary];
     } else {
         return;
     }
