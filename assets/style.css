@@ -133,3 +133,28 @@ body {
         outline: 1px solid #975800;
     }
 }
+#selectContainer {
+    align-self: center;
+}
+
+#selectContainer select {
+    color: #975800;
+    background-color: #faebd7;
+    border: 1px solid #975800;
+    border-radius: 5px;
+}
+
+.changeBtn {
+    color: #975800;
+    margin-left: 0.5rem;
+    border-radius: 8px;
+    background-color: #faebd7;
+    border: 1px solid #975800;
+    transition: all 100ms ease-in-out;
+    &:hover {
+        background-color: #fffdfb;
+    }
+    &:active {
+        scale: 0.97;
+    }
+}
