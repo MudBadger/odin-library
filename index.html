@@ -13,18 +13,29 @@
     <body>
         <h1 id="mainTitle">Library</h1>
         <dialog id="dialogBox">
-            <button formmethod="dialog" type="submit" id="closeModalBtn">
-                <i class="fa-solid fa-xmark"></i>
-            </button>
-            <form method="dialog" id="bookForm">
-                <label for="title">Title : </label>
-                <input type="text" id="title" name="title" />
-                <label for="author">Author : </label>
-                <input type="text" id="author" name="author" />
-                <label for="genre">Genre : </label>
-                <input type="text" id="genre" name="genre" />
-            </form>
-            <button type="submit" id="submitBookBtn">Submit</button>
+            <div id="dialogCloseBtnContainer">
+                <button formmethod="dialog" type="submit" id="closeModalBtn">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <div id="dialogContent">
+                <h2>New Book</h2>
+                <form method="dialog" id="bookForm">
+                    <div>
+                        <label for="title">Title : </label>
+                        <input type="text" id="title" name="title" />
+                    </div>
+                    <div>
+                        <label for="author">Author : </label>
+                        <input type="text" id="author" name="author" />
+                    </div>
+                    <div>
+                        <label for="genre">Genre : </label>
+                        <input type="text" id="genre" name="genre" />
+                    </div>
+                </form>
+                <button type="submit" id="submitBookBtn">Submit</button>
+            </div>
         </dialog>
         <div id="booksContainer">
             <button id="addBookBtn" class="bookCards">
