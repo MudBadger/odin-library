@@ -12,16 +12,16 @@ const bookOne = new Book("The Hobbit", "Tolkien", "Fantasy", "Oui");
 const bookTwo = new Book("Dune", "Herbert", "SF", "Non");
 const bookThree = new Book("Ranma 1/2", "Takahashi", "Manga", "Oui");
 
+//fermer et ouvrir la dialog box
 addBookBtn.addEventListener("click", () => {
     dialogBox.showModal();
 });
-
 closeModalBtn.addEventListener("click", () => {
     dialogBox.close();
 });
 dialogBox.addEventListener("click", () => dialogBox.close());
 dialogContainer.addEventListener("click", (event) => event.stopPropagation());
-
+//Soumettre nouveau livre
 submitBookBtn.addEventListener("click", (event) => {
     event.preventDefault();
     const bookInputs = [...bookForm.elements];
@@ -40,7 +40,7 @@ submitBookBtn.addEventListener("click", (event) => {
         dialogBox.close();
     }
 });
-
+//Prototype objet livre
 function Book(title, author, genre, read) {
     this.title = title;
     this.author = author;
@@ -55,7 +55,7 @@ Book.prototype.changeReadStatus = function () {
         this.read = "Non";
     }
 };
-
+//Ajouter et afficher des livres dans la bibliothèque
 function addBookToLibrary(newBook) {
     return myLibrary.push(newBook);
 }
