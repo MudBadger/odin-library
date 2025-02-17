@@ -29,7 +29,9 @@ body {
     color: var(--light-grey);
     font-size: 1.2rem;
 }
-
+main {
+    width: 100%;
+}
 .header {
     margin: 1rem 0;
     display: flex;
@@ -47,6 +49,22 @@ body {
     font-size: 4rem;
     font-family: var(--title-font);
     color: var(--main-red);
+}
+
+#searchContainer {
+    width: 100%;
+    font-size: 1.5rem;
+}
+#searchContainer form {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+#searchInput {
+    margin: 1rem;
+    min-width: 30%;
 }
 
 #addBookBtn {
@@ -171,7 +189,7 @@ body {
         cursor: pointer;
     }
 }
-#bookForm input {
+input {
     padding: 0.2rem;
     font-family: var(--main-font);
     color: var(--light-grey);
