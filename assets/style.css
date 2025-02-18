@@ -91,7 +91,7 @@ main {
     color: var(--main-red);
 }
 
-#booksContainer {
+.cardsContainer {
     display: flex;
     justify-content: center;
     margin: 1rem;
@@ -99,7 +99,7 @@ main {
     flex-wrap: wrap;
 }
 
-.bookCards,
+.bookCard,
 .cardsStyle {
     display: flex;
     flex-direction: column;

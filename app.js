@@ -7,7 +7,6 @@ const submitBookBtn = document.querySelector("#submitBookBtn");
 const bookForm = document.querySelector("#bookForm");
 const dialogContainer = document.querySelector("#dialogContainer");
 const searchInput = document.querySelector("#searchInput");
-let displayedLibrary = [];
 let searchValue;
 let removeBook = false;
 
@@ -66,16 +65,16 @@ Book.prototype.changeReadStatus = function () {
 
 //Ajouter et afficher des livres dans la bibliothèque
 function addBookToLibrary(newBook) {
-    return myLibrary.push(newBook);
+    myLibrary.push(newBook);
 }
 
 addBookToLibrary(bookOne);
 addBookToLibrary(bookTwo);
 addBookToLibrary(bookThree);
 function displayBook(book, removeBook) {
-    const bookCards = document.createElement("div");
-    bookCards.className = "bookCards";
-    bookCards.id = book.bookId;
+    const bookCard = document.createElement("div");
+    bookCard.className = "bookCard";
+    bookCard.id = book.bookId;
     if (removeBook) {
         document.getElementById(book.bookId).remove();
         return;
@@ -85,11 +84,9 @@ function displayBook(book, removeBook) {
     closeCards.innerHTML = "<i class='fa-solid fa-trash-can'></i>";
 
     closeCards.addEventListener("click", () => {
-        bookCards.remove();
+        bookCard.remove();
         myLibrary = myLibrary.filter((object) => object.bookId !== book.bookId);
-        /*  booksContainer.innerHTML = "";
-        booksContainer.append(addBookBtn);
-        loadingLibrary(); */
+        loadingLibrary();
     });
 
     const title = document.createElement("p");
@@ -119,26 +116,19 @@ function displayBook(book, removeBook) {
     changeStatusBtn.textContent = "Changer le statut";
     readStatus.innerHTML = "<span>Emprunté : " + book.read + "</span>";
 
-    bookCards.append(closeCards, title, author, genre, readStatus);
-    booksContainer.append(bookCards);
-    document.querySelector("#addBookBtn").after(bookCards);
+    bookCard.append(closeCards, title, author, genre, readStatus);
+    booksContainer.append(bookCard);
+    addBookBtn.after(bookCard);
     readStatus.append(changeStatusBtn);
 }
 
 function loadingLibrary() {
-    if (
-        myLibrary.length > 0 &&
-        (displayedLibrary.length === 0 ||
-            displayedLibrary.length >= myLibrary.length)
-    ) {
+    if (myLibrary.length > 0) {
+        booksContainer.innerHTML = "";
+        booksContainer.append(addBookBtn);
         myLibrary.forEach((book) => {
             displayBook(book);
         });
-        displayedLibrary = [...myLibrary];
-    } else if (myLibrary.length > displayedLibrary.length) {
-        const lastBook = myLibrary[myLibrary.length - 1];
-        displayBook(lastBook);
-        displayedLibrary = [...myLibrary];
     } else {
         return;
     }
@@ -151,21 +141,15 @@ function searchLibrary() {
         booksContainer.innerHTML = "";
         booksContainer.append(addBookBtn);
 
-        if (searchValue === "") {
-            loadingLibrary();
-        } else {
-            myLibrary.forEach((book) => {
-                const matchesSearch = [
-                    book.title,
-                    book.author,
-                    book.genre,
-                ].some((field) => field.toLowerCase().includes(searchValue));
+        myLibrary.forEach((book) => {
+            const matchesSearch = [book.title, book.author, book.genre].some(
+                (field) => field.toLowerCase().includes(searchValue)
+            );
 
-                if (matchesSearch) {
-                    displayBook(book);
-                }
-            });
-        }
+            if (matchesSearch) {
+                displayBook(book);
+            }
+        });
     });
 }
 
