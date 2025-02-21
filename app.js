@@ -115,6 +115,7 @@ function deleteBook(bookId, bookCard) {
         deleteCardBox.close();
         bookCard.remove();
         myLibrary = myLibrary.filter((object) => object.bookId !== bookId);
+        loadingLibrary();
     });
 }
 
