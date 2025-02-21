@@ -27,7 +27,7 @@ body {
     background-color: var(--main-grey);
     font-family: var(--main-font);
     color: var(--light-grey);
-    font-size: 1.2rem;
+    font-size: 1.3rem;
 }
 main {
     width: 100%;
@@ -54,23 +54,60 @@ main {
 #searchContainer {
     width: 100%;
     font-size: 1.5rem;
-}
-#searchContainer form {
+    margin-bottom: 2rem;
     display: flex;
-    width: 100%;
     justify-content: center;
     align-items: center;
 }
 
-#searchInput {
-    margin: 1rem;
+.searchInputContainer {
+    display: flex;
+    margin-left: 0.5rem;
     min-width: 30%;
+    font-family: var(--main-font);
+    color: var(--light-grey);
+    font-size: 1.3rem;
+    background-color: var(--dark-grey);
+    border: 1px solid var(--dark-grey);
+    &:focus-within {
+        border: 1px solid var(--main-red);
+        outline: 1px solid var(--main-red);
+    }
+}
+.searchInputStyle {
+    padding: 0.2rem;
+    flex-grow: 1;
+    font-family: var(--main-font);
+    color: var(--light-grey);
+    font-size: 1.3rem;
+    padding-left: 0.5rem;
+    background-color: var(--dark-grey);
+    border: none;
+    &:focus {
+        border: none;
+        outline: none;
+    }
+}
+
+.emptyInputBtn {
+    border: none;
+    background-color: var(--dark-grey);
+    margin-right: 0.5rem;
+    font-size: 1.3rem;
+    color: var(--light-grey);
+    &:hover {
+        color: var(--main-red);
+    }
+    &:active {
+        scale: 0.8;
+    }
 }
 
 #addBookBtn {
     border: none;
     color: var(--main-red);
-    font-size: 1.2rem;
+    font-size: 1.3rem;
+    font-weight: 700;
     font-family: var(--main-font);
     background-color: var(--main-grey);
     outline: 1px dashed var(--main-red);
@@ -109,12 +146,14 @@ main {
     border: 5px solid black;
     border-top-color: var(--main-red);
     border-left-color: var(--main-red);
+    min-width: 15%;
 }
 
 .bookInfos {
     margin: 0.5rem;
 }
-.closeCards {
+
+.deleteCardBtn {
     align-self: end;
     &:hover {
         color: var(--main-red);
@@ -122,41 +161,45 @@ main {
     }
 }
 
-#dialogBox {
+.dialogBox {
     background-color: var(--main-grey);
     border: 3px solid var(--main-red);
     min-width: 25%;
-    font-size: 1.2rem;
+    color: var(--light-grey);
+    font-size: 1.3rem;
     backdrop-filter: blur(8px);
     &::backdrop {
         backdrop-filter: blur(8px);
     }
 }
-#dialogContainer {
+.dialogContainer {
     width: 100%;
     height: 100%;
 }
-#dialogContent {
-    padding-bottom: 1rem;
+
+.dialogContent {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
     gap: 1.5rem;
+    padding-bottom: 1rem;
     color: var(--light-grey);
 }
 
-#dialogContent h2 {
+.dialogContainer h2 {
     margin: 0;
     padding: 0;
 }
-#dialogCloseBtnContainer {
+
+.dialogCloseBtnContainer {
     margin: 0;
     padding: 0;
     display: flex;
     width: 100%;
     justify-content: end;
 }
-#closeModalBtn {
+.closeModalBtn {
     background-color: var(--main-grey);
     color: var(--light-grey);
     border: none;
@@ -168,18 +211,18 @@ main {
     }
 }
 
-#bookForm {
+.dialogForm {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
     gap: 1rem;
 }
 
-#submitBookBtn {
+.submitBtn {
     padding: 0.5rem 2rem;
     color: var(--light-grey);
     font-family: var(--main-font);
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     font-weight: 700;
     background-color: var(--dark-grey);
     border: 1px solid var(--main-red);
@@ -189,11 +232,11 @@ main {
         cursor: pointer;
     }
 }
-input {
+.inputStyle {
     padding: 0.2rem;
     font-family: var(--main-font);
     color: var(--light-grey);
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     padding-left: 0.5rem;
     background-color: var(--dark-grey);
     border: 1px solid var(--dark-grey);
@@ -202,33 +245,42 @@ input {
         outline: 1px solid var(--main-red);
     }
 }
-#selectContainer {
+.selectContainer {
     align-self: center;
 }
 
-#selectContainer select {
+.selectContainer select {
     color: var(--light-grey);
     background-color: var(--dark-grey);
     border: 1px solid var(--main-red);
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     font-family: var(--main-font);
     padding: 0.2rem;
     padding-left: 0.5rem;
 }
 
-.changeBtn {
+.changeStatusBtn {
     color: var(--light-grey);
     margin-left: 0.5rem;
-    font-size: 1rem;
+    align-self: end;
+    width: 2rem;
+    height: 2rem;
     background-color: var(--dark-grey);
-    border: 1px solid var(--main-red);
-    transition: all 100ms ease-in-out;
+    border: none;
+    font-size: 1.2rem;
     font-family: var(--main-font);
+    border: 1px solid var(--main-red);
     &:hover {
-        background-color: var(--main-grey);
         cursor: pointer;
+        background-color: var(--main-grey);
+    }
+    &:hover .xChangeStatus {
+        color: var(--main-red);
+    }
+    &:hover .checkChangeStatus {
+        color: green;
     }
     &:active {
-        scale: 0.97;
+        scale: 0.9;
     }
 }

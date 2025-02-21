@@ -8,12 +8,13 @@
             src="https://kit.fontawesome.com/bf9509b226.js"
             crossorigin="anonymous"
         ></script>
+        <link rel="icon" type="image/svg+xml" href="./assets/images/logo.svg" />
         <title>Bibliothèque du Sabot</title>
     </head>
     <body>
         <header class="header">
             <img
-                src="./assets/images/logo.PNG"
+                src="./assets/images/logo.svg"
                 class="logo"
                 alt="Logo du Sabot, local libertaire, représentant un chat noir dans un sabot sur fond rouge"
             />
@@ -22,38 +23,70 @@
         </header>
         <main>
             <div id="searchContainer">
-                <form action="" method="get">
-                    <label for="searchInput">Rechercher : </label>
-                    <input type="text" id="searchInput" name="searchInput" />
-                </form>
+                <label for="searchInput">Rechercher : </label>
+                <div class="searchInputContainer">
+                    <input
+                        type="text"
+                        id="searchInput"
+                        name="searchInput"
+                        class="searchInputStyle"
+                    />
+                    <button
+                        type="button"
+                        id="emptySearchInputBtn"
+                        class="emptyInputBtn"
+                    >
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
             </div>
-            <dialog id="dialogBox">
-                <div id="dialogContainer">
-                    <div id="dialogCloseBtnContainer">
+            <dialog id="newBookBox" class="dialogBox">
+                <div id="newBookContainer" class="dialogContainer">
+                    <div class="dialogCloseBtnContainer">
                         <button
                             formmethod="dialog"
                             type="submit"
-                            id="closeModalBtn"
+                            id="closeNewBookBoxBtn"
+                            class="closeModalBtn"
                         >
                             <i class="fa-solid fa-xmark"></i>
                         </button>
                     </div>
-                    <div id="dialogContent">
+                    <div class="dialogContent">
                         <h2>Ajouter nouveau livre</h2>
-                        <form method="dialog" id="bookForm">
+                        <form
+                            method="dialog"
+                            id="newBookForm"
+                            class="dialogForm"
+                        >
                             <div>
                                 <label for="title">Titre : </label>
-                                <input type="text" id="title" name="title" />
+                                <input
+                                    type="text"
+                                    id="title"
+                                    name="title"
+                                    class="inputStyle"
+                                />
                             </div>
                             <div>
                                 <label for="author">Auteur : </label>
-                                <input type="text" id="author" name="author" />
+                                <input
+                                    type="text"
+                                    id="author"
+                                    name="author"
+                                    class="inputStyle"
+                                />
                             </div>
                             <div>
                                 <label for="genre">Genre : </label>
-                                <input type="text" id="genre" name="genre" />
+                                <input
+                                    type="text"
+                                    id="genre"
+                                    name="genre"
+                                    class="inputStyle"
+                                />
                             </div>
-                            <div id="selectContainer">
+                            <div class="selectContainer">
                                 <label for="read">Emprunté : </label>
                                 <select type="select" id="read" name="read">
                                     <option value="Oui">Oui</option>
@@ -61,9 +94,28 @@
                                 </select>
                             </div>
                         </form>
-                        <button type="submit" id="submitBookBtn">
+                        <button
+                            type="submit"
+                            id="submitNewBookBtn"
+                            class="submitBtn"
+                        >
                             Envoyer
                         </button>
+                    </div>
+                </div>
+            </dialog>
+            <dialog id="deleteCardBox" class="dialogBox">
+                <div id="deleteCardContainer" class="dialogContainer">
+                    <div class="dialogContent">
+                        <p>Êtes-vous sûr•e de vouloir supprimer ce livre ?</p>
+                        <div>
+                            <button id="cancelDeleteCardBtn" class="submitBtn">
+                                Annuler
+                            </button>
+                            <button id="deleteCardBtn" class="submitBtn">
+                                Supprimer
+                            </button>
+                        </div>
                     </div>
                 </div>
             </dialog>
