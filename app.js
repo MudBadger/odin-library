@@ -80,6 +80,7 @@ submitNewBookBtn.addEventListener("click", (event) => {
         );
         addBookToLibrary(newBook);
         loadingLibrary();
+        newBookForm.reset();
         newBookBox.close();
     } else {
         newBookBox.close();
