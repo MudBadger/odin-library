@@ -13,10 +13,24 @@ const emptySearchInputBtn = document.querySelector("#emptySearchInputBtn");
 let removeBook = false;
 const cancelDeleteCardBtn = document.querySelector("#cancelDeleteCardBtn");
 const deleteCardContainer = document.querySelector("#deleteCardContainer");
+const borrowed = "Emprunté";
+const available = "Disponible";
 
-const bookOne = new Book("The Hobbit", "Tolkien", "Fantasy", "Oui", "1tol");
-const bookTwo = new Book("Dune", "Herbert", "SF", "Non", "2her");
-const bookThree = new Book("Ranma 1/2", "Takahashi", "Manga", "Oui", "3tak");
+const bookOne = new Book(
+    "The Hobbit",
+    "Tolkien",
+    "Fantasy",
+    "Disponible",
+    "1tol"
+);
+const bookTwo = new Book("Dune", "Herbert", "SF", "Emprunté", "2her");
+const bookThree = new Book(
+    "Ranma 1/2",
+    "Takahashi",
+    "Manga",
+    "Disponible",
+    "3tak"
+);
 
 //Fermer et ouvrir la dialog box
 addBookBtn.addEventListener("click", () => {
@@ -61,7 +75,7 @@ submitNewBookBtn.addEventListener("click", (event) => {
             bookArray[0],
             bookArray[1],
             bookArray[2],
-            bookArray[3],
+            bookInputs[3].checked ? borrowed : available,
             bookArray[4]
         );
         addBookToLibrary(newBook);
@@ -82,7 +96,7 @@ function Book(title, author, genre, read, bookId) {
 }
 
 Book.prototype.changeReadStatus = function () {
-    this.read === "Oui" ? (this.read = "Non") : (this.read = "Oui");
+    this.read === borrowed ? (this.read = available) : (this.read = borrowed);
 };
 
 //Ajouter et afficher des livres dans la bibliothèque
@@ -105,7 +119,7 @@ function deleteBook(bookId, bookCard) {
 }
 
 function displayChangeStatusBtn(book, changeStatusBtn) {
-    if (book.read === "Oui") {
+    if (book.read === borrowed) {
         changeStatusBtn.innerHTML =
             "<i class='fa-solid fa-xmark xChangeStatus'></i>";
     } else {
@@ -148,7 +162,7 @@ function displayBook(book, removeBook) {
 
     changeStatusBtn.addEventListener("click", () => {
         book.changeReadStatus();
-        readStatus.innerHTML = "<span>Emprunté : " + book.read + "</span>";
+        readStatus.innerHTML = `<span>${book.read}</span>`;
         displayChangeStatusBtn(book, changeStatusBtn);
         readStatus.appendChild(changeStatusBtn);
     });
@@ -156,7 +170,7 @@ function displayBook(book, removeBook) {
     title.textContent = "Titre : " + book.title;
     author.textContent = "Auteur•e : " + book.author;
     genre.textContent = "Genre : " + book.genre;
-    readStatus.innerHTML = "<span>Emprunté : " + book.read + "</span>";
+    readStatus.innerHTML = `<span>${book.read}</span>`;
     displayChangeStatusBtn(book, changeStatusBtn);
 
     bookCard.append(deleteCardBtn, title, author, genre, readStatus);
@@ -177,24 +191,9 @@ function loadingLibrary() {
     }
 }
 
-function test() {
-    const searchValue = event.target.value.toLowerCase();
-    booksContainer.innerHTML = "";
-    booksContainer.append(addBookBtn);
-
-    myLibrary.forEach((book) => {
-        const matchesSearch = [book.title, book.author, book.genre].some(
-            (field) => field.toLowerCase().includes(searchValue)
-        );
-
-        if (matchesSearch) {
-            displayBook(book);
-        }
-    });
-}
 //rechercher dans la barre de recherche
 function searchLibrary() {
-    const searchValue = event.target.value.toLowerCase();
+    const searchValue = searchInput.value.toLowerCase();
     booksContainer.innerHTML = "";
     booksContainer.append(addBookBtn);
 

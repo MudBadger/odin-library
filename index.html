@@ -86,12 +86,15 @@
                                     class="inputStyle"
                                 />
                             </div>
-                            <div class="selectContainer">
-                                <label for="read">Emprunté : </label>
-                                <select type="select" id="read" name="read">
-                                    <option value="Oui">Oui</option>
-                                    <option value="Non">Non</option>
-                                </select>
+                            <div class="checkboxContainer">
+                                <label for="read">Emprunté : Oui</label>
+                                <input
+                                    type="checkbox"
+                                    id="read"
+                                    name="read"
+                                    value="Oui"
+                                    class="checkmark"
+                                />
                             </div>
                         </form>
                         <button
@@ -108,11 +111,14 @@
                 <div id="deleteCardContainer" class="dialogContainer">
                     <div class="dialogContent">
                         <p>Êtes-vous sûr•e de vouloir supprimer ce livre ?</p>
-                        <div>
+                        <div class="deleteCardBtnContainer">
                             <button id="cancelDeleteCardBtn" class="submitBtn">
                                 Annuler
                             </button>
-                            <button id="deleteCardBtn" class="submitBtn">
+                            <button
+                                id="deleteCardBtn"
+                                class="submitBtn deleteCardBoxBtn"
+                            >
                                 Supprimer
                             </button>
                         </div>
